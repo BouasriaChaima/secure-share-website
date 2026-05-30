@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Create Account - Secure Share</title>
+{% endblock %}
+
+{% block content %}
+<div id="register" class="page active">
+  <div class="auth-container">
+   <div class="auth-left">
+       <h1>Secure Share</h1>
+       <p>
+        Your files, encrypted and protected. Share with confidence knowing your data is secured with military-grade encryption.
+       </p>
+        <ul>
+          <li>Your files are always encrypted and private</li>
+          <li>Only you can access your files</li>
+          <li>Protection against hackers</li>
+          <li>Share files securely with others</li>
+          <li>Easy upload and download</li>
+        </ul>
+   </div>
+   <div class="auth-right">
+    <h1>Create Account</h1>
+    <p>Join Secure Share and start protecting your files</p>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <div class="alert alert-{{ category }}">{{ message }}</div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+     <form action="/register" method="POST">
+      <div class="form-grp">
+       <label>Username</label>
+       <input type="text" placeholder="Choose a username" name="username" id="username">
+      </div>
+      <div class="form-grp">
+       <label>Email Address</label>
+       <input type="email"  placeholder="your.email@example.vom" name="email" id="email">
+      </div>
+       <div class="form-grp">
+       <label >Password</label>
+       <input type="password" placeholder="Create a strong password" name="password" id="password">
+       </div>
+       <div class="form-grp">
+       <label >Confirm Password</label>
+       <input type="password" placeholder="Re-enter your password" name="confirm_password" id="confirm_password">
+       </div>
+       <div class="form-grp">
+          <button class="create-account-btn">Create Acoount</button>
+       </div>
+     </form>
+     <div class="auth-footer">
+      <p>Already have an account? <a href="/login">Sign in</a></p>
+     </div>
+   </div>
+   </div>
+</div>
+{% endblock %}
